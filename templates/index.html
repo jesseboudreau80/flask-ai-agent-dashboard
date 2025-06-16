@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Agent Dashboard</title>
+  <script>
+    async function runAgent(endpoint, payload) {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      document.getElementById('output').innerText = data.output;
+    }
+  </script>
+</head>
+<body>
+  <h1>AI Agent Dashboard</h1>
+
+  <section>
+    <h3>📝 JBLP Cover Letter Generator</h3>
+    <input id="center_name" placeholder="Center Name">
+    <input id="license_type" placeholder="License Type">
+    <button onclick="runAgent('/generate-cover-letter', {
+      center_name: document.getElementById('center_name').value,
+      license_type: document.getElementById('license_type').value
+    })">Generate Cover Letter</button>
+  </section>
+
+  <section>
+    <h3>🔍 Regulatory Research Tool</h3>
+    <input id="location" placeholder="Enter Location (City, State)">
+    <button onclick="runAgent('/run-research', {
+      location: document.getElementById('location').value
+    })">Run Research</button>
+  </section>
+
+  <pre id="output" style="margin-top:20px; background:#f4f4f4; padding:10px;"></pre>
+</body>
+</html>
