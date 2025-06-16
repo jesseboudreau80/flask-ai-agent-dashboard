@@ -1,2 +1,18 @@
-# flask-ai-agent-dashboard
-Lightweight Flask-based AI Agent Dashboard for Codespaces - A simple, browser-based tool to run pre-programmed AI workflows (agents) such as cover letter generation, regulatory research, and job description creation. Designed to run entirely inside GitHub Codespaces using the OpenAI API or future local LLM support.
+🧠 Flask Agent Dashboard
+This is a lightweight AI assistant interface built with Flask, designed to run inside GitHub Codespaces. It supports:
+
+🔧 Prebuilt AI agents like:
+
+JBLP Cover Letter Generator
+
+Regulatory Research Tool
+
+Job Description Creator
+
+✅ No installation required — works entirely in Codespaces
+
+🔐 OpenAI API-ready (with .env support)
+
+🛠️ Easily extendable for future agents or local LLM integration
+
+Ideal for professionals who want to safely run custom LLM tools without modifying their local machine.
