@@ -3,7 +3,7 @@ This is a lightweight AI assistant interface built with Flask, designed to run i
 
 🔧 Prebuilt AI agents like:
 
-JBLP Cover Letter Generator
+Cover Letter Generator
 
 Regulatory Research Tool
 
