@@ -1,8 +1,58 @@
-# Flask secret key
+##############################################
+# 🔐 Flask App Configuration
+##############################################
+
+# Flask session encryption key (change to anything random in production)
 SECRET_KEY=your-secret-key
 
-# OpenAI API key (optional for local models)
+
+##############################################
+# 🤖 LLM Configuration
+##############################################
+
+# === OPTION 1: OpenAI API ===
+
+# Your OpenAI API key (if using OpenAI)
+# Sign up at https://platform.openai.com
 OPENAI_API_KEY=your-openai-api-key
 
-# OpenAI model to use (e.g., gpt-4o, gpt-3.5-turbo)
+# Preferred OpenAI model (e.g., gpt-4o, gpt-3.5-turbo)
 OPENAI_MODEL=gpt-4o
+
+# Optional: Override base URL (for proxies or Azure OpenAI)
+# OPENAI_BASE_URL=https://api.openai.com/v1
+
+
+# === OPTION 2: Local Model via Ollama (e.g., llama3, mistral, etc.) ===
+
+# Use this if running Ollama locally (https://ollama.com)
+# Example: http://localhost:11434/api
+# OLLAMA_API_BASE=http://localhost:11434/api
+
+# Model name (must match installed Ollama model)
+# OLLAMA_MODEL=llama3
+
+
+##############################################
+# 🧠 Memory / Vector Store Settings (Optional)
+##############################################
+
+# Enable/disable vector memory (true/false)
+# ENABLE_MEMORY=false
+
+# Path to local vector store (if used)
+# VECTOR_DB_PATH=./vector_store
+
+
+##############################################
+# 📂 File Upload Settings (Optional)
+##############################################
+
+# Maximum file upload size (in bytes)
+# MAX_CONTENT_LENGTH=5242880  # 5 MB
+
+# Directory to save uploaded files
+# UPLOAD_FOLDER=./uploads
+
+
+##################
