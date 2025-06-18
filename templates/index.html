@@ -1,8 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI Agent Dashboard</title>
+  <title>Ask Agent Jesse AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="avatar">J</div>
+      <div class="brand">ASK JESSE AI</div>
+      <button class="agent-btn" onclick="selectAgent('cover_letter')">L&P Cover Letter</button>
+      <button class="agent-btn" onclick="selectAgent('reg_research')">Reg Research</button>
+      <button class="agent-btn" onclick="selectAgent('chatbox')">Chat Mode</button>
+      <button class="agent-btn" onclick="saveChat()">💾 Save Chat</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-panel">
+      <div id="agent-content">
+
+        <!-- Cover Letter -->
+        <div id="cover_letter" class="agent-panel">
+          <h2>L&P Cover Letter Generator</h2>
+          <input id="center_name" placeholder="Center Name">
+          <input id="license_type" placeholder="License Type">
+          <button onclick="runAgent('/generate-cover-letter', {
+            center_name: document.getElementById('center_name').value,
+            license_type: document.getElementById('license_type').value
+          })">Generate Cover Letter</button>
+        </div>
+
+        <!-- Regulatory Research -->
+        <div id="reg_research" class="agent-panel" style="display:none;">
+          <h2>Regulatory Research Tool</h2>
+          <input id="location" placeholder="City, State">
+          <select id="center_type">
+            <option value="">Select Type</option>
+            <option value="Pet Center">Pet Center</option>
+            <option value="Vet Center">Vet Center</option>
+          </select>
+          <label><input type="checkbox" id="dog_boarding"> Dog Boarding</label>
+          <label><input type="checkbox" id="cat_boarding"> Cat Boarding</label>
+          <label><input type="checkbox" id="dog_daycare"> Dog Daycare</label>
+          <label><input type="checkbox" id="grooming"> Grooming</label>
+          <label><input type="checkbox" id="training"> Pet Training</label>
+          <label><input type="checkbox" id="emergency"> 24/7 Emergency</label>
+          <label><input type="checkbox" id="mobile"> Mobile Services</label>
+          <button onclick="runAgent('/run-research', {
+            location: document.getElementById('location').value,
+            center_type: document.getElementById('center_type').value,
+            services: {
+              dog_boarding: document.getElementById('dog_boarding').checked,
+              cat_boarding: document.getElementById('cat_boarding').checked,
+              dog_daycare: document.getElementById('dog_daycare').checked,
+              grooming: document.getElementById('grooming').checked,
+              training: document.getElementById('training').checked,
+              emergency: document.getElementById('emergency').checked,
+              mobile: document.getElementById('mobile').checked
+            }
+          })">Run Research</button>
+        </div>
+
+        <!-- Chat Mode -->
+        <div id="chatbox" class="agent-panel" style="display:none;">
+          <h2>💬 Chat with Jesse AI</h2>
+          <div id="chat-window"></div>
+          <form id="chat-form" onsubmit="sendMessage(event)">
+            <input type="text" id="chat-input" placeholder="Ask me anything..." required />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+
+        <div id="output" class="output-box"></div>
+      </div>
+    </main>
+  </div>
+
   <script>
+    let sessionId = "default";
+    let currentAgentId = "cover_letter";
+
+    function selectAgent(agentId) {
+      currentAgentId = agentId;
+      document.querySelectorAll('.agent-panel').forEach(el => el.style.display = 'none');
+      document.getElementById(agentId).style.display = 'block';
+      document.getElementById('output').innerText = '';
+    }
+
     async function runAgent(endpoint, payload) {
       const res = await fetch(endpoint, {
         method: 'POST',
@@ -12,29 +97,49 @@
       const data = await res.json();
       document.getElementById('output').innerText = data.output;
     }
+
+    async function sendMessage(e) {
+      e.preventDefault();
+      const input = document.getElementById('chat-input');
+      const msg = input.value;
+      appendChat('user', msg);
+      input.value = '';
+
+      const res = await fetch('/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: msg,
+          session_id: sessionId,
+          agent_id: currentAgentId
+        })
+      });
+
+      const data = await res.json();
+      appendChat('bot', data.response);
+    }
+
+    function appendChat(role, text) {
+      const chatWindow = document.getElementById('chat-window');
+      const div = document.createElement('div');
+      div.className = role;
+      div.innerText = text;
+      chatWindow.appendChild(div);
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    async function saveChat() {
+      const res = await fetch('/save-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          session_id: sessionId,
+          agent_id: currentAgentId
+        })
+      });
+      const data = await res.json();
+      alert(data.status === "success" ? "Chat saved!" : "Error saving chat.");
+    }
   </script>
-</head>
-<body>
-  <h1>AI Agent Dashboard</h1>
-
-  <section>
-    <h3>📝 JBLP Cover Letter Generator</h3>
-    <input id="center_name" placeholder="Center Name">
-    <input id="license_type" placeholder="License Type">
-    <button onclick="runAgent('/generate-cover-letter', {
-      center_name: document.getElementById('center_name').value,
-      license_type: document.getElementById('license_type').value
-    })">Generate Cover Letter</button>
-  </section>
-
-  <section>
-    <h3>🔍 Regulatory Research Tool</h3>
-    <input id="location" placeholder="Enter Location (City, State)">
-    <button onclick="runAgent('/run-research', {
-      location: document.getElementById('location').value
-    })">Run Research</button>
-  </section>
-
-  <pre id="output" style="margin-top:20px; background:#f4f4f4; padding:10px;"></pre>
 </body>
 </html>
