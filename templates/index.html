@@ -1,145 +1,108 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Ask Agent Jesse AI</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-  <div class="layout">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="avatar">J</div>
-      <div class="brand">ASK JESSE AI</div>
-      <button class="agent-btn" onclick="selectAgent('cover_letter')">L&P Cover Letter</button>
-      <button class="agent-btn" onclick="selectAgent('reg_research')">Reg Research</button>
-      <button class="agent-btn" onclick="selectAgent('chatbox')">Chat Mode</button>
-      <button class="agent-btn" onclick="saveChat()">💾 Save Chat</button>
-    </aside>
+{% extends "base.html" %}
 
-    <!-- Main Content -->
-    <main class="main-panel">
-      <div id="agent-content">
+{% block content %}
+<main class="main-panel">
+  <div id="agent-content">
 
-        <!-- Cover Letter -->
-        <div id="cover_letter" class="agent-panel">
-          <h2>L&P Cover Letter Generator</h2>
-          <input id="center_name" placeholder="Center Name">
-          <input id="license_type" placeholder="License Type">
-          <button onclick="runAgent('/generate-cover-letter', {
-            center_name: document.getElementById('center_name').value,
-            license_type: document.getElementById('license_type').value
-          })">Generate Cover Letter</button>
+    <!-- Cover Letter Tool -->
+    <div id="cover_letter" class="agent-panel" style="display: none;">
+      <h2>L&P Cover Letter Generator</h2>
+      <input id="center_name" placeholder="Center Name">
+      <input id="license_type" placeholder="License Type">
+      <button onclick="runAgent('/generate-cover-letter', {
+        center_name: document.getElementById('center_name').value,
+        license_type: document.getElementById('license_type').value
+      })">Generate Cover Letter</button>
+    </div>
+
+    <!-- Compliance Tool -->
+    <div id="reg_research" class="agent-panel" style="display: none;">
+      <h2>Regulatory Compliance Research Tool</h2>
+      <input id="center_code" placeholder="Center Code (6-digit)">
+      <input id="center_name_research" placeholder="Center Name">
+      <input id="location" placeholder="Street, City, State ZIP">
+      <select id="center_type">
+        <option value="">Select Type</option>
+        <option value="Pet Center">Pet Center</option>
+        <option value="Vet Center">Vet Center</option>
+      </select>
+      <button onclick="runAgent('/run-research', {
+        center_code: document.getElementById('center_code').value,
+        center_name: document.getElementById('center_name_research').value,
+        location: document.getElementById('location').value,
+        center_type: document.getElementById('center_type').value,
+        services: {}
+      })">Run Research</button>
+    </div>
+
+    <!-- Ask SAM Chat Panel -->
+    <div id="chatbox" class="agent-panel">
+      <div class="sam-container">
+
+        <div class="sam-header">
+  <img src="{{ url_for('static', filename='sam-icon.svg') }}" alt="SAM Logo" class="sam-logo">
+  <h2>Chat With SAM</h2>
+  <p class="sam-subtext">Your Safety &amp; Morale FUR-iend</p>
+</div>
+
+        <div class="sam-grid">
+          <div class="sam-column">
+            <h3><img src="{{ url_for('static', filename='chat_bubble_icon.svg') }}" class="icon"> Examples</h3>
+            <div class="card">"What do I do if the fire alarm goes off during daycare?"</div>
+            <div class="card">"How often should we sanitize water bowls in playrooms?"</div>
+            <div class="card">"Got any fun ideas to boost team morale during a slow week?"</div>
+            <div class="card">"Who do I contact if there's an injury on-site?"</div>
+            <div class="card">"Can I post a lost pet on our center’s social media?"</div>
+          </div>
+
+          <div class="sam-column">
+            <h3><img src="{{ url_for('static', filename='ai_chat_icon.svg') }}" class="icon"> Capabilities</h3>
+            <div class="card">Provides quick guidance on safety procedures and policies</div>
+            <div class="card">Suggests ways to keep morale high and teamwork strong</div>
+            <div class="card">Gives reminders about cleaning, health, and compliance</div>
+            <div class="card">Offers tips for training new hires or hosting safety huddles</div>
+            <div class="card">Connects you with the right department or resource</div>
+          </div>
+
+          <div class="sam-column">
+            <h3><img src="{{ url_for('static', filename='shield_warning_icon.svg') }}" class="icon"> Limitations</h3>
+            <div class="card">Doesn’t replace official training or emergency protocols</div>
+            <div class="card">May not have access to your center’s local procedures</div>
+            <div class="card">Can’t verify licenses or submit regulatory documents</div>
+            <div class="card">May not be updated with your state’s latest regulations</div>
+            <div class="card">Not a substitute for speaking with your DD, GM, or the Support Center</div>
+          </div>
         </div>
 
-        <!-- Regulatory Research -->
-        <div id="reg_research" class="agent-panel" style="display:none;">
-          <h2>Regulatory Research Tool</h2>
-          <input id="location" placeholder="City, State">
-          <select id="center_type">
-            <option value="">Select Type</option>
-            <option value="Pet Center">Pet Center</option>
-            <option value="Vet Center">Vet Center</option>
-          </select>
-          <label><input type="checkbox" id="dog_boarding"> Dog Boarding</label>
-          <label><input type="checkbox" id="cat_boarding"> Cat Boarding</label>
-          <label><input type="checkbox" id="dog_daycare"> Dog Daycare</label>
-          <label><input type="checkbox" id="grooming"> Grooming</label>
-          <label><input type="checkbox" id="training"> Pet Training</label>
-          <label><input type="checkbox" id="emergency"> 24/7 Emergency</label>
-          <label><input type="checkbox" id="mobile"> Mobile Services</label>
-          <button onclick="runAgent('/run-research', {
-            location: document.getElementById('location').value,
-            center_type: document.getElementById('center_type').value,
-            services: {
-              dog_boarding: document.getElementById('dog_boarding').checked,
-              cat_boarding: document.getElementById('cat_boarding').checked,
-              dog_daycare: document.getElementById('dog_daycare').checked,
-              grooming: document.getElementById('grooming').checked,
-              training: document.getElementById('training').checked,
-              emergency: document.getElementById('emergency').checked,
-              mobile: document.getElementById('mobile').checked
-            }
-          })">Run Research</button>
-        </div>
+        <div class="chat-bar">
+  <!-- Mic button (Voice to Text) -->
+  <button class="icon-button" onclick="startVoiceInput()">
+    <img src="{{ url_for('static', filename='voice_to_text_button_icon.svg') }}" alt="Mic">
+  </button>
 
-        <!-- Chat Mode -->
-        <div id="chatbox" class="agent-panel" style="display:none;">
-          <h2>💬 Chat with Jesse AI</h2>
-          <div id="chat-window"></div>
-          <form id="chat-form" onsubmit="sendMessage(event)">
-            <input type="text" id="chat-input" placeholder="Ask me anything..." required />
-            <button type="submit">Send</button>
-          </form>
-        </div>
+  <!-- Upload button -->
+  <button class="icon-button" onclick="document.getElementById('file-upload').click()">
+    <img src="{{ url_for('static', filename='image_upload_select_icon.svg') }}" alt="Upload">
+  </button>
+  <input type="file" id="file-upload" style="display: none">
 
-        <div id="output" class="output-box"></div>
+  <!-- Chat input -->
+  <input type="text" id="chat-input" placeholder="Type message">
+
+  <!-- Send button -->
+  <button class="icon-button" onclick="sendMessage(event)">
+    <img src="{{ url_for('static', filename='send_arrow_icon.svg') }}" alt="Send">
+  </button>
+</div>
+<p id="file-name-preview" style="font-size: 0.8rem; color: #ccc; text-align: center;"></p>
+
+<p id="file-name-preview" style="font-size: 0.8rem; color: #ccc; text-align: center;"></p>
+
+        <div id="chat-window" class="chat-window"></div>
       </div>
-    </main>
+    </div>
+
+    <div id="output" class="output-box"></div>
   </div>
-
-  <script>
-    let sessionId = "default";
-    let currentAgentId = "cover_letter";
-
-    function selectAgent(agentId) {
-      currentAgentId = agentId;
-      document.querySelectorAll('.agent-panel').forEach(el => el.style.display = 'none');
-      document.getElementById(agentId).style.display = 'block';
-      document.getElementById('output').innerText = '';
-    }
-
-    async function runAgent(endpoint, payload) {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
-      document.getElementById('output').innerText = data.output;
-    }
-
-    async function sendMessage(e) {
-      e.preventDefault();
-      const input = document.getElementById('chat-input');
-      const msg = input.value;
-      appendChat('user', msg);
-      input.value = '';
-
-      const res = await fetch('/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: msg,
-          session_id: sessionId,
-          agent_id: currentAgentId
-        })
-      });
-
-      const data = await res.json();
-      appendChat('bot', data.response);
-    }
-
-    function appendChat(role, text) {
-      const chatWindow = document.getElementById('chat-window');
-      const div = document.createElement('div');
-      div.className = role;
-      div.innerText = text;
-      chatWindow.appendChild(div);
-      chatWindow.scrollTop = chatWindow.scrollHeight;
-    }
-
-    async function saveChat() {
-      const res = await fetch('/save-chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          session_id: sessionId,
-          agent_id: currentAgentId
-        })
-      });
-      const data = await res.json();
-      alert(data.status === "success" ? "Chat saved!" : "Error saving chat.");
-    }
-  </script>
-</body>
-</html>
+</main>
+{% endblock %}

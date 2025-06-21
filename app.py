@@ -9,17 +9,19 @@ import json
 from pathlib import Path
 from datetime import datetime
 
+# ✅ Modern SDK client (v1+)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# Global in-memory structure: { session_id: { agent_id: [messages] } }
+# Global memory: { session_id: { agent_id: [messages] } }
 chat_sessions = {}
 
-# Directory for saved sessions
+# Save directory
 SAVE_DIR = Path("chat_logs")
 SAVE_DIR.mkdir(exist_ok=True)
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
 
 @app.route('/')
 def index():
@@ -40,8 +42,18 @@ def research():
     data = request.json
     location = data.get('location')
     center_type = data.get('center_type')
+    center_code = data.get('center_code')
+    center_name = data.get('center_name')
     services = data.get('services', {})
-    result = run_research(location, center_type, services)
+
+    result = run_research(
+        location=location,
+        center_type=center_type,
+        services=services,
+        center_code=center_code,
+        center_name=center_name
+    )
+
     return jsonify({"output": result})
 
 
@@ -50,8 +62,12 @@ def chat():
     data = request.get_json()
     session_id = data.get('session_id', 'default')
     agent_id = data.get('agent_id', 'chatbox')
-    user_message = data.get('message', '')
+    user_message = data.get('message', '').strip()
 
+    if not user_message:
+        return jsonify({"response": "Message cannot be empty."}), 400
+
+    # Setup chat memory
     if session_id not in chat_sessions:
         chat_sessions[session_id] = {}
     if agent_id not in chat_sessions[session_id]:
@@ -61,16 +77,19 @@ def chat():
 
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",  # As per your preference
+            model="gpt-3.5-turbo",
             messages=chat_sessions[session_id][agent_id],
             temperature=0.7
         )
         bot_reply = response.choices[0].message.content.strip()
         chat_sessions[session_id][agent_id].append({"role": "assistant", "content": bot_reply})
 
+        print(f"[{session_id}][{agent_id}] Chat updated: {len(chat_sessions[session_id][agent_id])} messages")
         return jsonify({"response": bot_reply})
     except Exception as e:
-        return jsonify({"response": f"Error: {str(e)}"}), 500
+        import traceback
+        print(traceback.format_exc())
+        return jsonify({"response": f"⚠️ Error calling OpenAI:\n\n{str(e)}"}), 500
 
 
 @app.route('/save-chat', methods=['POST'])
@@ -116,7 +135,6 @@ def load_chat():
     with open(filepath, 'r') as f:
         history = json.load(f)
 
-    # Extract session and agent from filename
     try:
         session_id, agent_id, _ = filename.split("__")
     except:
