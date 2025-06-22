@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="task-dashboard">
+  <h2>L&P Tasks</h2>
+  <div class="table-container">
+    <table class="task-table">
+      <thead>
+        <tr>
+          <th>Task Name</th>
+          <th>Center ID</th>
+          <th>Status</th>
+          <th>Due Date</th>
+        </tr>
+      </thead>
+      <tbody id="task-table-body">
+        <!-- JS will populate this -->
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const res = await fetch("/lp-tasks-data");
+    const tasks = await res.json();
+    const tbody = document.getElementById("task-table-body");
+
+    tasks.forEach(task => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${task["Task Name"] || "—"}</td>
+        <td>${task["CenterID"] || "—"}</td>
+        <td>${task["Priority/Status"] || "—"}</td>
+        <td>${task["Due Date"] || "—"}</td>
+      `;
+      row.onclick = () => openModal(task);
+      tbody.appendChild(row);
+    });
+  });
+
+  function openModal(task) {
+    // (Optional: Add modal popup logic here)
+  }
+</script>
+{% endblock %}
