@@ -1,0 +1,54 @@
+New Pet Intake Form
+
+Purpose
+To outline the proper steps to review Pet Intake Questions for a new pet.
+Audience
+Center Manager (CM), Assistant Manager (AM), Customer Service Representative (CSR), Guest Service Specialist (GSS)
+General Information
+If your center is not on Gingr yet, you will use the in-store version of the Pet Intake Form for every new pet.
+Clients will be required to answer all Pet Intake questions when setting up a pet profile on Gingr.
+If a Guest Services Specialist is setting up the profile, they will ask all Pet Intake questions and use the Pet Intake Talking Points.
+All Pet Intake Questions will appear on the pet’s profile on Gingr.
+Staff will be responsible for maintaining the answers on the pet’s profile on Gingr as they observe behaviors.
+At check-in for a Meet and Greet, the owner will be responsible to stay and confirm the completed questionnaire or stay and complete the in-store version of the Pet Intake Form, which may take 5-10 minutes.
+If there are any red flags, it is up to the General Manager’s discretion to accept the pet for services.
+Procedure
+CSR must pull the Reservation by Date report to view all Meet and Greets each morning by completing the following steps:  
+Hover over the Reports and more icon and select Reports.
+
+
+Type “reservations” into the Search Report box and select “Reservations by Date”. 
+
+Enter the date and select Meet and Greet reservation. Click Generate Report. 
+
+Scroll down to view Meet and Greets on that date.
+
+After pulling the report, the CSR must open each Meet and Greet pet’s profile and print the Pet Intake Questions.
+To print the questions, follow this procedure:
+Highlight the answered questions. 
+Right Click.
+Select Print.
+This will only print the highlighted selection.
+
+This process must be repeated with each Meet and Greet pet.
+When the client arrives, the CSR will review all questions with the owner and make updates if needed.
+If the owner did not complete the online questions, they must complete the in-store version.
+Based on the owner’s response, the CSR will make any updates to the questions on the pet’s profile as needed.
+To edit the questions, the CSR will complete the following steps: 
+Select the pet’s profile.
+Click the pencil icon and select edit animal.
+
+Scroll down to the behavioral questions section.
+
+Enter the current answers for each question.
+Scroll to the bottom and select Save.
+
+Return to the pet’s profile and review all questions to confirm the information listed is correct.
+Once all information is correct, CSR will add icons for any red flags.
+Select the pet’s profile.
+Select the + symbol below Animal Icons. 
+
+ Add appropriate icons.
+CSR is to highlight any important answers on the Meet & Greet Intake Form questions sheet and give the document to the kennel supervisor or staff member doing Meets & Greets for that day.
+References
+New Pet Intake Form

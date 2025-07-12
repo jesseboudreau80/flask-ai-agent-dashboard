@@ -1,0 +1,46 @@
+Patient Alerts
+
+Purpose
+Our goal is to stay up to date with our pet guests’ needs. This procedure will outline how to input an alert or special notes on a pet’s file.
+Audience
+Center Manager, Assistant Manager, Supervisor, Customer Service Representatives, Animal Care Attendants, Veterinary Assistants.
+General Information
+Some patient alerts will automatically “pop up” when accessing a pet’s file. When this happens, it is important to read over these alerts.
+There will be a standard list of icons to choose from within Gingr.
+If the pet has icons, ensure accurate colored paper or stickers are used for the pet’s Run Card.
+If you need to add a patient alert/pet icon added to the center’s Point-of-Sale system, submit an IT – Cornerstone – Gingr Support Request ticket.
+Procedure
+This procedure will outline how to manage patient alerts within Gingr and Cornerstone
+Patient Alerts in Gingr
+In Gingr, patient alerts are called “animal icons”. You can add an icon to a pet anytime you can see the pet’s information (their file, on the dashboard, etc.).
+Click the grey + sign to open all available icons.
+
+
+
+Hover over the icon to read more information about the icon.
+
+
+Once you find the desired icon, left click the icon and add any needed comments.
+Then, press the +Add Icon button.
+If you need to edit an icon:
+Find the Animal’s name (on dashboard, profile, etc) and click on the light gray + icon next to their assigned icons.
+Icons currently assigned to an animal will show up with a blue highlight. To edit the icon, click on the highlighted icon.
+Type in note. If desired, click the box “Create Employee Note?”.
+Press the Save button.
+If you need to remove an icon:
+Find the Animal’s name (on dashboard, profile, etc) and click on the light gray + icon next to their assigned icons.
+Icons currently assigned to an animal will show up with a blue highlight. To edit the icon, click on the highlighted icon.
+Click on the red Trash Cash icon next to the comments field to remove the icon from the pet.
+Press the OK button on the confirmation.
+Patient Alerts in Cornerstone
+In Cornerstone, access the Patient Clipboard.
+Locate and select the desired patient.
+Under the patient’s file, select Prompts/Notes icon.
+
+Right click and select Update button.
+Locate the desired alert. Select the box to the right of the alert and type in the needed information.
+Once complete, press the OK button.
+This alert will now “pop up” anytime the patient’s clipboard (file) is opened/accessed.
+
+References
+IT – Cornerstone – Gingr Support Request 

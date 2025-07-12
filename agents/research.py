@@ -73,3 +73,4 @@ def run_research(location, center_type, services=None, center_code=None, center_
     footer = "\nPlease verify with official government portals. This advisory tool offers a strong starting point for research."
 
     return header + "\n" + local_section + county_section + state_section + federal_section + vet_section + footer
+

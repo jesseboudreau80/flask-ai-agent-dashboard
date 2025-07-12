@@ -1,0 +1,48 @@
+Vet Bill Reimbursement
+
+Purpose
+This procedure describes the steps to take when a Destination Pet (DP) center needs to take a pet in our care to a veterinary practice/emergency clinic and DP needs reimburse for the veterinary bill (entire or partial amount of the bill).
+Audience
+Regional Managers, General Managers, Supervising Manager, Regional Veterinary Director
+General Information
+All incidents should be reported by following the Incident Reporting procedure.
+If the veterinary bill is $1,500 or more a Settlement Agreement is required.
+If the client threatens legal actions or turns to social media/online reviews, a Settlement Agreement is required.
+Procedure
+Perform the following steps to reimburse for a veterinary bill.
+A relationship should already be built with a local veterinary practice / emergency clinic. In building the relationship, be proactive and acquire a W-9 for future payments to this center.
+ Reference: Establishing and Building Relationships
+If pet care or treatment is needed, prepare to bring the pet to the local veterinary practice / emergency clinic. Depending on the severity of the incident, have staff member bring the pet immediately for care and a different staff member call the veterinary practice / emergency to alert that the pet is on their way.
+Follow these steps for communication within 1 hour of the incident occurring.
+Make the situation safe and confirm there is no danger to people or animals.
+Update the pet owner about the incident.
+Contact your Manager and Regional Manager to provide details of the incident.
+Reference and follow all the steps in the Incident Reporting procedure.
+Request invoice and medical records regarding the incident for the veterinary practice. If the pet has a pre-existing condition, we do need to be made aware of this pre-existing condition and should request historical medical records.
+ Best Practice: Receive the full invoice, including any future charges (rechecks, refill medications, etc.).
+ Goal: Understand the total dollar amount for reimbursement.
+Submit the medical records and invoices to the Regional Manager (RM) and Regional Veterinary Director (RVD).
+RM and RVD review the case together and determine reimbursement approval. If the reimbursement is over $1,500, the client has threatened legal or public social media action, the RM and RVD emails legal@destpet.com to draft Settlement Agreement to include the following:
+Client Name.
+Client Address.
+Total Reimbursement Amount.
+Note: Once the Settlement Agreement is executed, no further payments will be made for the occurrence. Therefore, all medical progress appointments are to be fully resolved before submitting invoices for the Settlement Agreement.
+Who is to be reimbursed.
+There are 2 options for reimbursement payment:
+ Best Practice: Reimburse the veterinary practice directly.
+Reimburse the client.
+Regional Manager is to obtain Settlement Agreement from Legal and send to GM.
+GM is to present Settlement Agreement to client for signature.
+GM scans and returns signed Settlement Agreement RM.
+RM sends signed Settlement Agreement to Legal.
+RM will submit Check Request coded with Expense Code 73801- Veterinary Bill and all supporting documents to ap@destpet.com. Supporting documents include:
+W-9 for Veterinary Practice / Emergency.
+Backup documentation totaling the amount of the check request.
+Fully executed Settlement Agreement (signed by Client and Destination Pet).
+ Reference: Check Request
+Note: If treatment will not be completed without payment, General Manager is to reach out to Regional Manager. (Steps 1-3 should have already occurred).
+Note: 
+References
+Establishing and Building Relationships 
+Incident Reporting 
+Check Request 

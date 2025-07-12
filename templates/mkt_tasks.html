@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="task-dashboard">
+  <h2>L&P Tasks</h2>
+  <div id="task-list"></div>
+</div>
+
+<!-- Modal -->
+<div id="task-modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-button" onclick="closeModal()">×</span>
+    <h3 id="modal-title"></h3>
+    <p><strong>Center ID:</strong> <span id="modal-center"></span></p>
+    <p><strong>Status:</strong> <span id="modal-status"></span></p>
+    <p><strong>Due:</strong> <span id="modal-due"></span></p>
+    <p><strong>Description:</strong></p>
+    <p id="modal-description"></p>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const res = await fetch("/mkt-tasks-data");
+    const tasks = await res.json();
+    const list = document.getElementById("task-list");
+
+    tasks.forEach(task => {
+      const div = document.createElement("div");
+      div.className = "task-card";
+      div.innerHTML = `
+        <h4>${task["Task Name"]}</h4>
+        <p>Status: ${task["Priority/Status"]}</p>
+        <p>Due: ${task["Due Date"]}</p>
+      `;
+      div.onclick = () => openModal(task);
+      list.appendChild(div);
+    });
+  });
+
+  function openModal(task) {
+    document.getElementById("modal-title").innerText = task["Task Name"];
+    document.getElementById("modal-center").innerText = task["CenterID"];
+    document.getElementById("modal-status").innerText = task["Priority/Status"];
+    document.getElementById("modal-due").innerText = task["Due Date"];
+    document.getElementById("modal-description").innerText = task["Description"];
+    document.getElementById("task-modal").classList.remove("hidden");
+  }
+
+  function closeModal() {
+    document.getElementById("task-modal").classList.add("hidden");
+  }
+</script>
+{% endblock %}

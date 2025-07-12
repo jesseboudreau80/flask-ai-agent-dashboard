@@ -1,0 +1,18 @@
+{
+  "defaultModelProvider": "openrouter",
+  "models": [
+    {
+      "title": "DeepSeek V3 via OpenRouter",
+      "provider": "openrouter",
+      "model": "deepseek/deepseek-chat-v3-0324:free",
+      "apiBase": "https://openrouter.ai/api/v1",
+      "apiKey": "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"
+    },
+    {
+      "title": "OpenAI GPT-3.5",
+      "provider": "openai",
+      "model": "gpt-3.5-turbo",
+      "apiKey": "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"
+    }
+  ]
+}

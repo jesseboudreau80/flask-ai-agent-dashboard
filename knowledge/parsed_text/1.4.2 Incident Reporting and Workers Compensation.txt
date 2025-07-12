@@ -1,0 +1,120 @@
+Incident Reporting and Workers Compensation Procedure
+
+
+Purpose
+
+This procedure outlines the Destination Pets' (DP) process for reporting incidents and understanding the process of handling workers’ compensation effectively.
+
+Audience
+
+General Managers, Assistant Managers, Regional Managers, Customer Service Representatives.
+
+General Information
+
+DP intends that all accidents, incidents, and near misses (referred to herein as incidents) are properly investigated or reviewed according to the requirements of this procedure. This procedure provides a means for gathering facts to aid in taking corrective actions to prevent a recurrence of the same incident. While all incidents should be investigated, the extent of such investigations shall reflect the seriousness of the incident. Employees responding to an incident should ensure the scene is safe for other employees, people, or animals.  The safety of all people and animals is DP’s highest priority. Workers' compensation is an insurance safety net provided by DP to cover medical expenses and lost wages for employees injured on the job. Ohio and Washington have State-specific procedures that need to be followed.  Please see section 1.4 for additional information.
+
+Responsibilities
+
+All Employees: Report incidents promptly and accurately.
+Managers/HR Representatives: Respond to and resolve assigned incidents, ensuring proper documentation and follow-up.
+Safety/Workers Compensation Team: Monitor incidents, perform investigations, track, conduct trend analysis, and recommend preventative measures.
+
+Procedure
+
+The following process should be used for incident handling and reporting purposes. 
+
+Human
+Emergency Treatment
+If an injury is serious or life-threatening, seek emergency assistance immediately by calling 911.
+The Center should not transport a serious or life-threatening injured employee via personal vehicle; 911 should be the main point of transportation.
+If an injured employee needs emergency transport to a hospital or emergency room, a CM or Supervisor should accompany the employee to the medical facility.  
+The employees’ emergency contacts should also be notified.
+CM should supply the employee going for emergency transport with DP Workers Compensation Forms as soon as possible. 
+In an emergency, the hospital or emergency room should also have Worker’s Compensation forms.
+Non-Emergency Treatment
+If an injury requires non-emergency medical care other than Center first aid, DP may provide transportation (if needed) for the injured employee's first medical visit.  
+DP should identify the location and hours of local urgent care facilities in the Workers Compensation Third Party Administrators medical provider network. Please see the Reference section for preferred partners.
+The employee going for non-emergency treatment should be provided with DP Workers Compensation Forms as provided to the Centers by the Workers Compensation Administrator.
+Reporting
+Within 24 hours of the incident, the Center Manager shall complete an incident report form on the Agilence DP Portal. Please be as specific as possible regarding the incident description on this form. 
+If relevant, obtain witness statements from any employees who were involved in or may have seen the incident occur.
+Workers Compensation
+If an employee was involved in an incident and injured by exposure to work activities, the First Report of Injury or Illness Form must be filled out within 24 hours of the injury (even if the employee does not seek medical care). See below for instructions:
+This is the procedure in all states except Ohio and Washington.
+ The Center Manager must immediately complete the WCF First Report of Injury (FROI) online form following the incident. To fill in the policy number on this form, use policy number 4035261. 
+The center manager must fill out all required fields on the online form and thoroughly describe the incident. After completing the online form,
+The Center Manager must download the “FROI” form and email the form to workerscomp@destpet.com. The FROI Form can be given to the employee to take with them when seeking medical treatment.  
+Note: the employee can seek medical attention without the FROI, but it MUST be completed within 24 hours of injury
+Sate-Specific Procedures:
+Ohio
+The center managers must complete the Sheakley FROI form included in the workers’ compensation packet on behalf of the injured employee in Ohio. 
+To fill in the policy number for Ohio on this form, use policy number #80087995. 
+After completing the form, the CM must scan it and email it to workerscomp@destpet.com.
+The FROI Form can be given to the employee to take with them when seeking medical treatment.  
+Note: the employee can seek medical attention without the FROI, but it MUST be completed within 24 hours of injury.
+
+Washington 
+An employee who believes that they have suffered an on-the-job illness or injury must file a claim with Washington State Labor and Industries L&I.  
+Claims may be filed in the following ways:
+Employees and medical providers must complete a report of industrial or occupational disease at the time of treatment.
+Online directly with L&I https://lni.wa.gov/claims/for-workers/file-a-claim/ 
+by calling L&I at 1-877-561-FILE
+The policy number given for a Washington state report is 654,007-00.
+Return to Work
+DP’s RTW program has been developed to minimize the production lost by DP and wages lost by the employee as a result of temporary incapacity resulting from an on-the-job injury. The RTW program is intended to provide modified duty within the employee’s restrictions whenever possible and to facilitate the employee’s full rehabilitation as rapidly as possible.  See Attachment A - Program Policy Statement.
+Initial Medical Appointment
+If an employee seeks medical treatment due to an injury or incident at DP, the employee should inform the medical professional that DP has an RTW program with light duty/modified assignments available. 
+A CM or Supervisor should accompany the injured employee to the initial medical appointment to provide support, assist with the paperwork, and ensure the medical facility understands that DP has an RTW program.  
+If the CM or Supervisor is unable to accompany the employee to the appointment, the CM or Supervisor can either give the paperwork to the employee to bring to the initial appointment or the paperwork can be sent to the medical facility via fax or email.  See Attachment G for Initial Medical Appointment paperwork.  
+After the initial medical visit, the employee must provide any medical documentation with restrictions to their CM. 
+The CM will then communicate these restrictions to the DP RTW Specialist to ensure that all necessary accommodation is made.
+Transitional Duty
+If the employee’s treating doctor states that the employee will need a transitional duty position, the CM will contact the DP RTW Specialist and work together to identify appropriate transitional assignments and choose the best match for the employee’s skills. 
+DP will look at options with non-profit organizations if no appropriate transitional assignments are available. 
+Every assignment must meet the doctors’ restrictions. 
+DP will make every effort to develop transitional productive work, including volunteer assignments - (if allowed in that state).
+When the job description for the transitional work is completed, the CM or Supervisor will provide the doctor/medical facility within 24 hours of the first appointment with the injured employee’s job description, including the physical demands and an introductory letter explaining the RTW program.  See Attachment B - Letter to Treating Physician for RTW, Attachment C - Completed Job Analysis, and Attachment D – HIPPA Notice to Physician.  
+The treating physician will fill out the last page of the Completed Job Analysis and email the completed form to the CM within 24 hours of receipt of the document.  
+The CM will be responsible for following up on the paperwork to ensure it is completed.  
+Once the CM has received the signed job analysis, the CM will forward that paperwork to the RTW Specialist.  
+Employee Return to Work Agreement
+Once the treating physician has agreed to the job analysis, the CM must fill out the Transitional Productive Return to Work Agreement (See Attachment E).  
+The employee will either agree to or decline the transitional work duties offered in this agreement.  
+Should the employee agree to the transitional work duties listed on the agreement, the employee, CM, and Safety and WC Specialist will sign and date the agreement portion of the form. 
+If the employee decides to decline the offered transitional work duties, the employee, CM, and Safety and WC Specialist will sign and date the agreement portion of the form. 
+Note: If the employee declines the RTW offer, this decision may impact the employee's compensation claim and employment status with DP.  
+Ongoing Medical Treatment
+ After each WC medical appointment, the employee will provide the CM with an up-to-date work status.  
+Should the employee provide an up-to-date work status, the CM will be responsible for following up with the employee within 24 hours of the appointment.  
+The CM must document all discussions on the Log of Medical Appointments form – see Attachment F – Log of Medical Appointments and kept in a locked file or online in the employee’s personnel file.
+Transitional Duty
+The CM will talk with the employee on the day of the injury and follow up every week until they are medically released to return to their regular job.
+Animal
+Emergency Treatment
+If a DP Pet Guest has a serious or life-threatening condition or incident, contact the nearest veterinary center and transport the animal as soon as possible. 
+Update the pet owner about the incident as soon as possible. If the call goes to voicemail, leave a message in a calm tone asking the pet owner to call back as quickly as possible.  
+Additionally, you should attempt to contact the pet guest's emergency contact if the pet parent has not been reached.   
+Non-Emergency Treatment
+If a pet incident or injury requires non-emergency medical care, including first aid, contact the Pet Guest's owner to update them on the situation as soon as possible. 
+If you cannot get in touch with the pet owner within 12 hours, then attempt to contact the pet guest's emergency contact.
+Identification of the Level of Incident for Reporting 
+The chart below is to be referenced when identifying incidents within the organization.
+
+
+
+
+
+
+References
+
+Workers Compensation
+WCF Quick Reference Page
+Ohio Quick Reference Page (Sheakley FROI)
+Washington Quick Reference Page
+Preferred Medical Providers
+Preferred Medical Specialist Providers
+
+Reporting 
+Agilence DP Portal
+
+Animal Incident Customer Communications Guide How to Submit a Workers' Compensation Claim

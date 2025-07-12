@@ -1,108 +1,100 @@
 {% extends "base.html" %}
 
 {% block content %}
-<main class="main-panel">
-  <div id="agent-content">
+<div class="agent-panel">
 
-    <!-- Cover Letter Tool -->
-    <div id="cover_letter" class="agent-panel" style="display: none;">
-      <h2>L&P Cover Letter Generator</h2>
-      <input id="center_name" placeholder="Center Name">
-      <input id="license_type" placeholder="License Type">
-      <button onclick="runAgent('/generate-cover-letter', {
-        center_name: document.getElementById('center_name').value,
-        license_type: document.getElementById('license_type').value
-      })">Generate Cover Letter</button>
-    </div>
+  <!-- Cover Letter Tool -->
+  <div id="cover_letter" class="agent-panel" style="display: none;">
+    <h2>L&P Cover Letter Generator</h2>
+    <input id="center_name" placeholder="Center Name">
+    <input id="license_type" placeholder="License Type">
+    <button onclick="runAgent('/generate-cover-letter', {
+      center_name: document.getElementById('center_name').value,
+      license_type: document.getElementById('license_type').value
+    })">Generate Cover Letter</button>
+  </div>
 
-    <!-- Compliance Tool -->
-    <div id="reg_research" class="agent-panel" style="display: none;">
-      <h2>Regulatory Compliance Research Tool</h2>
-      <input id="center_code" placeholder="Center Code (6-digit)">
-      <input id="center_name_research" placeholder="Center Name">
-      <input id="location" placeholder="Street, City, State ZIP">
-      <select id="center_type">
-        <option value="">Select Type</option>
-        <option value="Pet Center">Pet Center</option>
-        <option value="Vet Center">Vet Center</option>
-      </select>
-      <button onclick="runAgent('/run-research', {
-        center_code: document.getElementById('center_code').value,
-        center_name: document.getElementById('center_name_research').value,
-        location: document.getElementById('location').value,
-        center_type: document.getElementById('center_type').value,
-        services: {}
-      })">Run Research</button>
-    </div>
+  <!-- Compliance Tool -->
+  <div id="reg_research" class="agent-panel" style="display: none;">
+    <h2>Regulatory Compliance Research Tool</h2>
+    <input id="center_code" placeholder="Center Code (6-digit)">
+    <input id="center_name_research" placeholder="Center Name">
+    <input id="location" placeholder="Street, City, State ZIP">
+    <select id="center_type">
+      <option value="">Select Type</option>
+      <option value="Pet Center">Pet Center</option>
+      <option value="Vet Center">Vet Center</option>
+    </select>
+    <button onclick="runAgent('/run-research', {
+      center_code: document.getElementById('center_code').value,
+      center_name: document.getElementById('center_name_research').value,
+      location: document.getElementById('location').value,
+      center_type: document.getElementById('center_type').value,
+      services: {}
+    })">Run Research</button>
+  </div>
 
-    <!-- Ask SAM Chat Panel -->
-    <div id="chatbox" class="agent-panel">
-      <div class="sam-container">
+  <!-- Ask SAM Chat Panel -->
+  <div id="chatbox" class="agent-panel">
+    <div class="sam-container">
+      <div class="sam-header">
+        <img src="{{ url_for('static', filename='sam-icon.svg') }}" alt="SAM Logo" class="sam-logo">
+        <h2>Chat With SAM</h2>
+        <p class="sam-subtext">Your Safety &amp; Morale FUR-iend</p>
+      </div>
 
-        <div class="sam-header">
-  <img src="{{ url_for('static', filename='sam-icon.svg') }}" alt="SAM Logo" class="sam-logo">
-  <h2>Chat With SAM</h2>
-  <p class="sam-subtext">Your Safety &amp; Morale FUR-iend</p>
-</div>
-
-        <div class="sam-grid">
-          <div class="sam-column">
-            <h3><img src="{{ url_for('static', filename='chat_bubble_icon.svg') }}" class="icon"> Examples</h3>
-            <div class="card">"What do I do if the fire alarm goes off during daycare?"</div>
-            <div class="card">"How often should we sanitize water bowls in playrooms?"</div>
-            <div class="card">"Got any fun ideas to boost team morale during a slow week?"</div>
-            <div class="card">"Who do I contact if there's an injury on-site?"</div>
-            <div class="card">"Can I post a lost pet on our center’s social media?"</div>
-          </div>
-
-          <div class="sam-column">
-            <h3><img src="{{ url_for('static', filename='ai_chat_icon.svg') }}" class="icon"> Capabilities</h3>
-            <div class="card">Provides quick guidance on safety procedures and policies</div>
-            <div class="card">Suggests ways to keep morale high and teamwork strong</div>
-            <div class="card">Gives reminders about cleaning, health, and compliance</div>
-            <div class="card">Offers tips for training new hires or hosting safety huddles</div>
-            <div class="card">Connects you with the right department or resource</div>
-          </div>
-
-          <div class="sam-column">
-            <h3><img src="{{ url_for('static', filename='shield_warning_icon.svg') }}" class="icon"> Limitations</h3>
-            <div class="card">Doesn’t replace official training or emergency protocols</div>
-            <div class="card">May not have access to your center’s local procedures</div>
-            <div class="card">Can’t verify licenses or submit regulatory documents</div>
-            <div class="card">May not be updated with your state’s latest regulations</div>
-            <div class="card">Not a substitute for speaking with your DD, GM, or the Support Center</div>
-          </div>
+      <div class="sam-grid">
+        <div class="sam-column">
+          <h3><img src="{{ url_for('static', filename='chat_bubble_icon.svg') }}" class="icon"> Examples</h3>
+          <div class="card">"What do I do if the fire alarm goes off during daycare?"</div>
+          <div class="card">"How often should we sanitize water bowls in playrooms?"</div>
+          <div class="card">"Got any fun ideas to boost team morale during a slow week?"</div>
+          <div class="card">"Who do I contact if there's an injury on-site?"</div>
+          <div class="card">"Can I post a lost pet on our center’s social media?"</div>
         </div>
 
-        <div class="chat-bar">
-  <!-- Mic button (Voice to Text) -->
-  <button class="icon-button" onclick="startVoiceInput()">
-    <img src="{{ url_for('static', filename='voice_to_text_button_icon.svg') }}" alt="Mic">
-  </button>
+        <div class="sam-column">
+          <h3><img src="{{ url_for('static', filename='ai_chat_icon.svg') }}" class="icon"> Capabilities</h3>
+          <div class="card">Provides quick guidance on safety procedures and policies</div>
+          <div class="card">Suggests ways to keep morale high and teamwork strong</div>
+          <div class="card">Gives reminders about cleaning, health, and compliance</div>
+          <div class="card">Offers tips for training new hires or hosting safety huddles</div>
+          <div class="card">Connects you with the right department or resource</div>
+        </div>
 
-  <!-- Upload button -->
-  <button class="icon-button" onclick="document.getElementById('file-upload').click()">
-    <img src="{{ url_for('static', filename='image_upload_select_icon.svg') }}" alt="Upload">
-  </button>
-  <input type="file" id="file-upload" style="display: none">
-
-  <!-- Chat input -->
-  <input type="text" id="chat-input" placeholder="Type message">
-
-  <!-- Send button -->
-  <button class="icon-button" onclick="sendMessage(event)">
-    <img src="{{ url_for('static', filename='send_arrow_icon.svg') }}" alt="Send">
-  </button>
-</div>
-<p id="file-name-preview" style="font-size: 0.8rem; color: #ccc; text-align: center;"></p>
-
-<p id="file-name-preview" style="font-size: 0.8rem; color: #ccc; text-align: center;"></p>
-
-        <div id="chat-window" class="chat-window"></div>
+        <div class="sam-column">
+          <h3><img src="{{ url_for('static', filename='shield_warning_icon.svg') }}" class="icon"> Limitations</h3>
+          <div class="card">Doesn’t replace official training or emergency protocols</div>
+          <div class="card">May not have access to your center’s local procedures</div>
+          <div class="card">Can’t verify licenses or submit regulatory documents</div>
+          <div class="card">May not be updated with your state’s latest regulations</div>
+          <div class="card">Not a substitute for speaking with your DD, GM, or the Support Center</div>
+        </div>
       </div>
-    </div>
 
-    <div id="output" class="output-box"></div>
+      <div class="chat-bar">
+        <button class="icon-button" onclick="startVoiceInput()">
+          <img src="{{ url_for('static', filename='voice_to_text_button_icon.svg') }}" alt="Mic">
+        </button>
+
+        <button class="icon-button" onclick="document.getElementById('file-upload').click()">
+          <img src="{{ url_for('static', filename='image_upload_select_icon.svg') }}" alt="Upload">
+        </button>
+        <input type="file" id="file-upload" style="display: none">
+
+        <input type="text" id="chat-input" placeholder="Type message">
+
+        <button class="icon-button" onclick="sendMessage(event)">
+          <img src="{{ url_for('static', filename='send_arrow_icon.svg') }}" alt="Send">
+        </button>
+      </div>
+
+      <p id="file-name-preview" style="font-size: 0.8rem; color: #ccc; text-align: center;"></p>
+
+      <div id="chat-window" class="chat-window"></div>
+    </div>
   </div>
-</main>
+
+  <div id="output" class="output-box"></div>
+</div>
 {% endblock %}

@@ -4,21 +4,231 @@
   <meta charset="UTF-8">
   <title>PAWSitiveOps</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+    }
+
+    .sidebar {
+      background: #141c2f;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: 100vh;
+      overflow-y: auto;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      transition: width 0.3s ease, padding 0.3s ease;
+    }
+
+    .main {
+      padding: 2rem;
+      flex: 1;
+      transition: margin-left 0.3s ease;
+    }
+
+    body.sidebar-open .sidebar {
+      width: 260px;
+      padding: 1rem;
+    }
+
+    body:not(.sidebar-open) .sidebar {
+      width: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    body.sidebar-open .main {
+      margin-left: 260px;
+    }
+
+    body:not(.sidebar-open) .main {
+      margin-left: 0;
+    }
+
+    .sidebar-header {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      padding: 10px;
+    }
+
+    .sidebar-toggle,
+    .floating-toggle {
+      background: #2a2f3b;
+      border: 1px solid #555;
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .sidebar-toggle:hover,
+    .floating-toggle:hover {
+      background-color: #39425a;
+      transform: scale(1.05);
+    }
+
+    .sidebar-branding {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-branding h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .sidebar-logo {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+    }
+
+    .sidebar-nav li {
+      margin: 0.5rem 0;
+    }
+
+    .sidebar-nav a,
+    .sidebar-nav button {
+      color: white;
+      text-decoration: none;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-size: 1rem;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    .sidebar-nav .submenu {
+      margin-left: 1rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(30, 30, 47, 0.6);
+      z-index: 90;
+      display: none;
+      transition: opacity 0.3s ease;
+    }
+
+    body.sidebar-open .overlay {
+      display: block;
+    }
+
+    .floating-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 200;
+      display: none;
+    }
+
+    body:not(.sidebar-open) .floating-toggle {
+      display: block;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Global Toggle Button (always visible in top-left) -->
+  <button id="sidebarToggle" class="floating-toggle">☰</button>
+
   <div class="layout">
     <!-- Sidebar -->
     <div class="sidebar">
-      <h2>
+      <div class="sidebar-header">
+        <button id="sidebarToggle" class="sidebar-toggle">☰</button>
+      </div>
+      <div class="sidebar-branding">
         <img src="{{ url_for('static', filename='pawsitiveops-logo.png') }}" alt="Logo" class="sidebar-logo">
-        PAWSitiveOps
-      </h2>
+        <h2>PAWSitiveOps</h2>
+      </div>
+
       <input type="text" id="search" placeholder="Search..." onkeyup="filterLinks()">
-      <a href="{{ url_for('index') }}" class="sidebar-link">Dashboard</a>
-      <a href="#" class="sidebar-link">Features</a>
-      <a href="#" class="sidebar-link">Users</a>
-      <a href="#" class="sidebar-link">Pricing</a>
-      <a href="#" class="sidebar-link">Integrations</a>
+
+      <ul class="sidebar-nav">
+        <li><a href="#">Dashboard</a></li>
+
+        <li class="has-submenu">
+          <button onclick="toggleSubmenu(this)">▶ Chat With SAM</button>
+          <ul class="submenu hidden">
+            <li><a href="#">Saved Chats</a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <button onclick="toggleSubmenu(this)">▶ Engagement</button>
+          <ul class="submenu hidden">
+            <li><a href="#">Scoreboard</a></li>
+            <li><a href="#">Trivia w/ SAM</a></li>
+            <li><a href="#">Jeopardy</a></li>
+            <li><a href="#">Brain Board</a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <button onclick="toggleSubmenu(this)">▶ Support Center</button>
+          <ul class="submenu hidden">
+            <li class="has-submenu">
+              <button onclick="toggleSubmenu(this)">▶ License & Permits</button>
+              <ul class="submenu hidden">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Files</a></li>
+                <li><a href="/lp-tasks">Tasks</a></li>
+                <li><a href="#">Research</a></li>
+              </ul>
+            </li>
+
+            <li class="has-submenu">
+              <button onclick="toggleSubmenu(this)">▶ Marketing</button>
+              <ul class="submenu hidden">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Files</a></li>
+                <li><a href="/mkt-tasks">Tasks</a></li>
+                <li><a href="#">Research</a></li>
+              </ul>
+            </li>
+
+            <li class="has-submenu">
+              <button onclick="toggleSubmenu(this)">▶ Facilities</button>
+              <ul class="submenu hidden">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Files</a></li>
+                <li><a href="/fac-tasks">Tasks</a></li>
+                <li><a href="#">Research</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
 
     <!-- Main Content -->
@@ -27,39 +237,50 @@
     </div>
   </div>
 
+  <!-- Overlay background -->
+  <div id="overlay" class="overlay"></div>
+
+  <!-- Scripts -->
   <script>
     function filterLinks() {
-      const input = document.getElementById('search').value.toLowerCase();
-      const links = document.querySelectorAll('.sidebar-link');
+      const input = document.getElementById('search')?.value.toLowerCase();
+      const links = document.querySelectorAll('.sidebar-nav a');
       links.forEach(link => {
         const text = link.textContent.toLowerCase();
         link.classList.toggle('hidden', !text.includes(input));
       });
     }
+
+    function toggleSubmenu(button) {
+      const submenu = button.nextElementSibling;
+      if (submenu) {
+        submenu.classList.toggle('hidden');
+        button.textContent = submenu.classList.contains('hidden')
+          ? '▶ ' + button.textContent.slice(2)
+          : '▼ ' + button.textContent.slice(2);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtns = document.querySelectorAll("#sidebarToggle");
+      const overlay = document.getElementById("overlay");
+
+      function toggleSidebar() {
+        document.body.classList.toggle("sidebar-open");
+      }
+
+      toggleBtns.forEach(btn => btn.addEventListener("click", toggleSidebar));
+      overlay?.addEventListener("click", toggleSidebar);
+    });
+
+    document.getElementById('file-upload')?.addEventListener('change', function () {
+      const fileName = this.files[0]?.name || '';
+      document.getElementById('file-name-preview').textContent = fileName
+        ? `Selected file: ${fileName}`
+        : '';
+    });
   </script>
-  <script>
-  document.getElementById('file-upload').addEventListener('change', function () {
-    const fileName = this.files[0]?.name || '';
-    document.getElementById('file-name-preview').textContent = fileName ? `Selected file: ${fileName}` : '';
-  });
 
-  function startVoiceInput() {
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = 'en-US';
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
-
-    recognition.start();
-
-    recognition.onresult = function(event) {
-      const transcript = event.results[0][0].transcript;
-      document.getElementById('chat-input').value = transcript;
-    };
-
-    recognition.onerror = function(event) {
-      alert('Voice recognition error: ' + event.error);
-    };
-  }
-</script>
+  {% block scripts %}{% endblock %}
 </body>
 </html>

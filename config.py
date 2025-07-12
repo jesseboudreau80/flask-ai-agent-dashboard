@@ -25,3 +25,19 @@ class Config:
     MAX_CONTENT_LENGTH = int(os.getenv('MAX_CONTENT_LENGTH', 5 * 1024 * 1024))  # 5 MB default
     UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', './uploads')
 
+# ✅ Add this at the end — returns a dictionary as expected by app.py
+def load_config():
+    return {
+        "defaultModelProvider": os.getenv("DEFAULT_MODEL_PROVIDER", "openai"),
+        "models": {
+            "openai": {
+                "apiKey": os.getenv("OPENAI_API_KEY"),
+                "defaultModel": os.getenv("OPENAI_MODEL", "gpt-3.5-turbo"),
+            },
+            "openrouter": {
+                "apiKey": os.getenv("OPENROUTER_API_KEY"),
+                "defaultModel": os.getenv("OPENROUTER_MODEL", "openai/gpt-3.5-turbo"),
+                "apiBase": os.getenv("OPENROUTER_API_BASE", "https://openrouter.ai/api/v1"),
+            },
+        },
+    }
